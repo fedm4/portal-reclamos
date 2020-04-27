@@ -11,6 +11,11 @@ const config ={
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_APP_ID
 };
+/**
+ * Clase Firebase, para centralizar
+ * la lógica del servicio de firebase
+ * en base de datos y storage
+ */
 class Firebase {
     constructor() {
         app.initializeApp(config);
@@ -18,15 +23,21 @@ class Firebase {
         this.storage = app.storage();
     }
 
-    async generarReclamo (reclamo) {
+    /**
+     * Genero nuevo reclamo guardando archivo
+     * en storage.
+     * @param {Reclamo} reclamo 
+     * @param {File} imagen 
+     */
+    async generarReclamo (reclamo, imagen) {
         delete reclamo.id;
         try {
-            await this.subirImagen(reclamo.imagen);
+            await this.subirImagen(imagen);
             const ret = this.database.ref('/reclamos/')
                 .push(reclamo);
             return ret.key;
         } catch (err) {
-            //TODO: Remover imagen de storage
+            this.borrarImagen(imagen);
             //TODO: Tirar error 
         }
     }
@@ -43,7 +54,24 @@ class Firebase {
         try {
             await fileRef.put(imagen);
         }catch(err) {
-            throw err;
+            console.log(err);
+        }
+    }
+
+    /**
+     * Borra la imagen del storage. 
+     * Utilizado en caso de error generando 
+     * reclamo.
+     * @param {File} imagen 
+     */
+    async borrarImagen (imagen) {
+        try{
+            const fileRef = this.storage
+                .ref()
+                .child(`images/${imagen.name}`);
+            await fileRef.delete();
+        }catch (err) {
+            console.log(err);
         }
     }
 }
