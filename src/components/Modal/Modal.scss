@@ -1,0 +1,54 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.modal-overlay {
+    background-color: rgba(0,0,0,0.6);
+    top: 0;
+    left: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.modal {
+    background: $white;
+    border-radius: 8px;
+    left: 0;
+    position: fixed;
+    top: 5vh;
+    width: 100%;
+    .modal-header {
+        @include flex-vertical-center;
+        @include box-shadow(5px, $black);
+        height: 55px;
+        position: relative;
+        .modal-header-title { 
+            margin: 0;
+        }
+        .modal-header-close {
+            @include remove-outline;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            height: 40px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40px;;
+        }
+    }
+    .modal-content {
+        padding: $padding-xxl;
+    }
+    .modal-footer {
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
+        height: 45px;
+        padding: 0 $padding-l;
+    }
+    @include tablet {
+        top: 20vh;
+    }
+}

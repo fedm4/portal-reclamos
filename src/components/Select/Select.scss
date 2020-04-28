@@ -1,0 +1,10 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.select {
+    @include remove-outline;
+    box-sizing: border-box;
+    font-family: $font-content;
+    height: 45px;
+    width: 100%;
+}

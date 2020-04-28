@@ -1,0 +1,10 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.textarea {
+    @include remove-outline;
+    box-sizing: border-box;
+    font-family: $font-content;
+    height: 105px;
+    width: 100%;
+}

@@ -1,0 +1,27 @@
+@mixin flex-vertical-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+@mixin box-shadow($shadow, $color) {
+    box-shadow: 0 0 $shadow $color;
+}
+
+@mixin remove-outline {
+    &:focus {
+        outline: none;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1024px) {
+        @content;
+    }
+}
