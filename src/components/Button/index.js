@@ -4,6 +4,7 @@ import './Button.scss';
 const Button = ({children, handleClick}) => {
     return (
         <button
+            className="button"
             type="button"
             onClick={handleClick}
         >

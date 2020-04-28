@@ -1,8 +1,6 @@
 @import '../../sass/mixins';
 
-.modal {
-    @include tablet {
-        width: 550px;
-        left: calc(50vw - 275px);
-    }
+.reclamo-form {
+    @include flex-vertical-center;
+    flex-wrap: wrap;
 }

@@ -1,13 +1,15 @@
-import React, { useContext, useReducer } from 'react';
-import FirebaseContext from '../../context/FirebaseContext';
+import React, { useContext, useReducer, useState } from 'react';
+
 import Button from '../Button';
+import FirebaseContext from '../../context/FirebaseContext';
+import FormAnimatedItem from '../FormAnimatedItem';
 import Input from '../Input';
-import Textarea from '../Textarea';
-import Modal from '../Modal';
+import FormModal from '../FormModal';
 import Reclamo from '../../models/Reclamo';
+import Select from '../Select';
+import Textarea from '../Textarea';
 
 import './ReclamoForm.scss';
-import Select from '../Select';
 
 /**
  * State contiene reclamo (tipo Reclamo)
@@ -27,7 +29,6 @@ const reducer = (state, action) => {
     }
 };
 
-
 const getComunasOptions = () => {
     const comunas = [];
     for(let i = 1; i <= 15; i++) {
@@ -40,7 +41,9 @@ const getComunasOptions = () => {
 const ReclamoForm = ({reclamoOpen, setReclamoOpen}) => {
     const firebase = useContext(FirebaseContext);
     const [state, dispatch] = useReducer(reducer, {reclamo: new Reclamo() });
+    
 
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     const closeModal = () => setReclamoOpen(false);
 
@@ -86,26 +89,44 @@ const ReclamoForm = ({reclamoOpen, setReclamoOpen}) => {
 
     const footerChildren = () => {
         return (
-            <Button handleClick={closeModal}>Close</Button>
+            <div>
+                {currentIndex===0?null:<Button handleClick={() => setCurrentIndex(currentIndex - 1)}>Anterior</Button>}
+                {
+                    currentIndex < 4
+                    ?
+                    <Button handleClick={() => setCurrentIndex(currentIndex+1)}>Siguiente</Button>
+                    :
+                    <Button handleClick={doIt}>Save!</Button>
+                }
+            </div>
         );
     };
 
     return (
-        <Modal
+        <FormModal
             footerChildren={footerChildren}
             showModal={reclamoOpen}
             closeModal={closeModal}
             title="Nuevo Reclamo"
-            width={550}
         >
             <form className="reclamo-form">
-                <Input type="text" name="titulo" onChange={handleChange} />
-                <Textarea name="descripcion" onChange={handleChange} />
-                <Select options={getComunasOptions()} onChange={handleChange} />
-                <Input type="file" name="imagen" onChange={handleImagen} />
-                <Button handleClick={doIt}>Save!</Button>
+                <FormAnimatedItem itemIndex={0} currentIndex={currentIndex}>
+                    <Input type="text" name="titulo" onChange={handleChange} />
+                </FormAnimatedItem>
+                <FormAnimatedItem itemIndex={1} currentIndex={currentIndex}>
+                    <Textarea name="descripcion" onChange={handleChange} />
+                </FormAnimatedItem>
+                <FormAnimatedItem itemIndex={2} currentIndex={currentIndex}>
+                    <Select options={getComunasOptions()} onChange={handleChange} />
+                </FormAnimatedItem>
+                <FormAnimatedItem itemIndex={3} currentIndex={currentIndex}>
+                    <Input type="file" name="imagen" onChange={handleImagen} />
+                </FormAnimatedItem>
+                <FormAnimatedItem itemIndex={4} currentIndex={currentIndex}>
+                    <div>Listita con datos ingrersados</div>
+                </FormAnimatedItem>
             </form>
-        </Modal>
+        </FormModal>
     )
 }
 
