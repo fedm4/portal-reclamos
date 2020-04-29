@@ -2,12 +2,13 @@
 @import '../../sass/mixins';
 
 .reclamo-form {
-    @include flex-vertical-center;
-    flex-wrap: wrap;
-    height: 550px;
+    position: relative;
 }
 .form-item-description {
     color: $white;
     font-family: $font-content;
-    width: 300px;
+    width: 100%;
+    a {
+        color: #089de3
+    }
 }

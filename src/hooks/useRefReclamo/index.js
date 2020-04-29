@@ -1,38 +1,38 @@
-import {createRef, useRef, useEffect} from 'react';
+import {useRef, useEffect} from 'react';
 
 const useRefReclamo = (currentIndex, restart) => {
-    const tituloInput = createRef();
-    const descripcionInput = createRef();
-    const comunasInput = createRef();
-    const imagenInput = createRef();
+    const tituloRef = useRef();
+    const descripcionRef = useRef();
+    const comunasRef = useRef();
+    const imagenRef = useRef();
 
-    useEffect(() => {
-        tituloInput.current.focus();
-    }, [restart, tituloInput]);
+    /*useEffect(() => {
+        tituloRef.current.focus();
+    }, [restart, tituloRef]);
     useEffect(()=> {
         switch(currentIndex) {
             case 0:
-                tituloInput.current.focus();
+                tituloRef.current.focus();
                 break;
             case 1:
-                descripcionInput.current.focus();
+                descripcionRef.current.focus();
                 break;
             case 2:
-                comunasInput.current.focus();
+                comunasRef.current.focus();
                 break;
             case 3:
-                imagenInput.current.focus();
+                imagenRef.current.focus();
                 break;
             default:
                 break;
         }
-    }, [currentIndex, tituloInput, descripcionInput, comunasInput, imagenInput]);
+    }, [currentIndex, tituloRef, descripcionRef, comunasRef, imagenRef]);*/
     
     return {
-        tituloInput,
-        descripcionInput,
-        comunasInput,
-        imagenInput
+        tituloRef,
+        descripcionRef,
+        comunasRef,
+        imagenRef
     }
 };
 

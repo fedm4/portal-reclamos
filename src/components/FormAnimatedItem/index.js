@@ -13,8 +13,7 @@ const FormAnimatedItem = ({itemIndex, currentIndex, children}) => {
                 'translateX(0)'
                 :
                 'translateX(150vw)',
-            position: currentIndex === itemIndex ? 'static' : 'absolute',
-            from: {transform: 'translateX(150vw)', position: 'absolute'},
+            from: {transform: 'translateX(150vw)'},
             
 
         }

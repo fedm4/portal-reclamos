@@ -1,28 +1,38 @@
 import React from 'react';
+import TextareaAutosize from 'react-textarea-autosize';
+import InputButtons from './../InputButtons';
+
 import './Textarea.scss';
 
-const Textarea = ({children, handleChange, name, input, onEnter}) => {
+const Textarea = ({children, handleChange, name, elRef, currentIndex, previousIndex, nextIndex, }) => {
     const handleKeyDown = e => {
-        if(e.key==='Tab') {
+        if(e.key==='Tab' ||
+            (e.key === 'Enter' && e.ctrlKey)
+        ) {
             e.preventDefault();
-            onEnter();
+            nextIndex();
         }
     }
-    const handleKeyPress = e => {
-        if(e.key === 'Enter' && e.key === 'Ctrl') {
-            onEnter();
-        }
-    }
+
     return (
-        <textarea
-            className="textarea"
-            name={name}
-            onChange={handleChange}
-            ref={input}
-            onKeyDown={handleKeyDown}
-        >
-            {children}
-        </textarea>
+        <div>
+            <div className="textarea-wrapper">
+                <TextareaAutosize
+                    className="textarea"
+                    name={name}
+                    onChange={handleChange}
+                    ref={elRef}
+                    onKeyDown={handleKeyDown}
+                >
+                    {children}
+                </TextareaAutosize>
+            </div>
+            <InputButtons 
+                currentIndex={currentIndex}
+                previousIndex={previousIndex}
+                nextIndex={nextIndex}
+            />
+        </div>
     )
 }
 
