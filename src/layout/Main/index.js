@@ -4,11 +4,15 @@ import Button from '../../components/Button';
 
 const Main = () => {
     const [reclamoOpen, setReclamoOpen] = useState(false);
-
+    const [restart, setRestart] = useState(false);
+    const handleClick = () => {
+        setReclamoOpen(true);
+        setRestart(!restart);
+    }
     return (
         <main>
-            <Button handleClick={() => setReclamoOpen(true)}>Nuevo Reclamo</Button>
-            <ReclamoForm reclamoOpen={reclamoOpen} setReclamoOpen={setReclamoOpen}/>
+            <Button handleClick={handleClick}>Nuevo Reclamo</Button>
+            <ReclamoForm reclamoOpen={reclamoOpen} setReclamoOpen={setReclamoOpen} restart={restart}/>
         </main>
     )
 }
