@@ -21,7 +21,7 @@ const useReclamo = (firebase) => {
         }
     };
 
-    const [state, dispatch] = useReducer(reducer, {reclamo: new Reclamo() });
+    const [state, dispatch] = useReducer(reducer, {reclamo: new Reclamo(), imagen: null });
 
     /**
      * Función Change para inputs excepto file
@@ -62,8 +62,7 @@ const useReclamo = (firebase) => {
     const saveReclamo = async ()=>{
         try {
         const id = await firebase.generarReclamo(state.reclamo, state.imagen);
-        console.log(id);
-        //TODO: Mostrar modal con ID
+        return id;
         }catch (err) {
         console.log(err);
         //TODO: Handle error
@@ -71,6 +70,8 @@ const useReclamo = (firebase) => {
     };
 
     return {
+        reclamo: state.reclamo,
+        imagen: state.imagen,
         handleChange,
         handleChangeSelect,
         handleImagen,

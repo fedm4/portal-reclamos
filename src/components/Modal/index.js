@@ -23,9 +23,6 @@ const Modal = ({children, closeModal, footerChildren, showModal, title}) => {
                             <section className="modal-content">
                                 {children}
                             </section>
-                            <footer className="modal-footer">
-                                { footerChildren() }
-                            </footer>
                         </animated.section>
                     </div>
             

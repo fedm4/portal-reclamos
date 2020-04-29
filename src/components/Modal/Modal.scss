@@ -51,6 +51,8 @@
         padding: 0 $padding-l;
     }
     @include tablet {
+        left: calc(50vw - 225px);
+        max-width: 550px;
         top: 20vh;
     }
 }

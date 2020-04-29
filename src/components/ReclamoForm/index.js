@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 
+import ConfirmacionReclamo from '../ConfirmacionReclamo';
 import FirebaseContext from '../../context/FirebaseContext';
 import FormAnimatedItem from '../FormAnimatedItem';
 import Input from '../Input';
@@ -22,16 +23,21 @@ const getComunasOptions = () => {
     return comunas;
 };
 
-const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart}) => {
+const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart, successModal}) => {
     const firebase = useContext(FirebaseContext);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const {handleChange, handleChangeSelect, handleImagen, saveReclamo} = useReclamo(firebase);
+    const {reclamo, imagen, handleChange, handleChangeSelect, handleImagen, saveReclamo} = useReclamo(firebase);
     const {tituloRef, descripcionRef, comunasRef, imagenRef} = useRefReclamo(currentIndex);
     
     const closeModal = () => setReclamoOpen(false);
     const nextIndex = () => setCurrentIndex(currentIndex + 1);
     const previousIndex = () => setCurrentIndex(currentIndex - 1);
     const getTabIndex = index => index === currentIndex ? 1 : 0;
+    const save = async (reclamo, imagen) => {
+        const id = await saveReclamo(reclamo, imagen);
+        closeModal();
+        successModal(id);
+    };
 
     return (
         <FormModal
@@ -82,7 +88,10 @@ const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart}) => {
                     />
                 </FormAnimatedItem>
                 <FormAnimatedItem itemIndex={3} currentIndex={currentIndex}>
-                    <p className="form-item-description"></p>
+                    <p className="form-item-description">
+                        Por último subamos una imagen de referencia. Esta imagen no es necesaria pero es importante para ayudarle con su reclamo.
+                    </p>
+
                     <InputFile
                         type="file"
                         name="imagen"
@@ -94,12 +103,17 @@ const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart}) => {
                     />
                 </FormAnimatedItem>
                 <FormAnimatedItem itemIndex={4} currentIndex={currentIndex}>
-                    <p className="form-item-description"></p>
-                    <div>Listita con datos ingrersados</div>
+                    <p className="form-item-description">
+                        Por último, vamos a revisar los datos ingresados. Una vez confirmado, haga click en "Generar Reclamo" para continuar.
+                    </p>
+                    <ConfirmacionReclamo
+                        reclamo={reclamo}
+                        imagen={imagen}
+                    />
                     <InputButtons 
                         currentIndex={currentIndex}
                         previousIndex={previousIndex}
-                        save={saveReclamo}
+                        save={save}
                     />
                 </FormAnimatedItem>
             </form>

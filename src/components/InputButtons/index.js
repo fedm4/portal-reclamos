@@ -11,7 +11,7 @@ const InputButtons = ({currentIndex, nextIndex, previousIndex, save}) => {
                 ?
                 <Button handleClick={nextIndex}>Siguiente</Button>
                 :
-                <Button handleClick={save}>Guardar</Button>
+                <Button handleClick={save}>Generar Reclamo</Button>
             }
         </div>
     );

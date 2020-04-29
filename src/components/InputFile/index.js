@@ -14,7 +14,7 @@ const InputFile = ({handleChange, name, elRef, currentIndex, previousIndex, next
             <Button type="button">
                 <label>
                     <input id="input-file" className="input-file" type="file" onChange={onChange} name={name} ref={elRef} />
-                    Selecconar Imagen
+                    Seleccionar
                 </label>
             </Button>
             {
