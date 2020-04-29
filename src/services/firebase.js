@@ -32,12 +32,12 @@ class Firebase {
     async generarReclamo (reclamo, imagen) {
         delete reclamo.id;
         try {
-            await this.subirImagen(imagen);
+            if(imagen) await this.subirImagen(imagen);
             const ret = this.database.ref('/reclamos/')
                 .push(reclamo);
             return ret.key;
         } catch (err) {
-            this.borrarImagen(imagen);
+            if(imagen) this.borrarImagen(imagen);
             //TODO: Tirar error 
         }
     }
