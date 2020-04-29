@@ -36,6 +36,8 @@
         }
     }
     .form-modal-content {
+        box-sizing: border-box;
         padding: $padding-xxl;
+        width: 100%;
     }
 }

@@ -24,13 +24,12 @@ const getComunasOptions = () => {
 const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart}) => {
     const firebase = useContext(FirebaseContext);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const {handleChange, handleImagen, saveReclamo} = useReclamo(firebase);
-    const {tituloInput, descripcionInput} = useRefReclamo(currentIndex);
+    const {handleChange, handleChangeSelect, handleImagen, saveReclamo} = useReclamo(firebase);
+    const {tituloInput, descripcionInput, comunasInput, imagenInput} = useRefReclamo(currentIndex);
     
     const closeModal = () => setReclamoOpen(false);
     const nextIndex = () => setCurrentIndex(currentIndex + 1);
     const previousIndex = () => setCurrentIndex(currentIndex - 1);
-    const isFocused = index => index === currentIndex;
 
     return (
         <FormModal
@@ -60,11 +59,17 @@ const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart}) => {
                 </FormAnimatedItem>
                 <FormAnimatedItem itemIndex={2} currentIndex={currentIndex}>
                     <p className="form-item-description"></p>
-                    <Select options={getComunasOptions()} handleChange={handleChange} onEnter={nextIndex} focus={isFocused(0)} />
+                    <Select
+                        name="comuna"
+                        options={getComunasOptions()}
+                        handleChange={handleChangeSelect}
+                        onEnter={nextIndex}
+                        input={comunasInput}
+                    />
                 </FormAnimatedItem>
                 <FormAnimatedItem itemIndex={3} currentIndex={currentIndex}>
                     <p className="form-item-description"></p>
-                    <Input type="file" name="imagen" handleChange={handleImagen} focus={isFocused(0)} />
+                    <Input type="file" name="imagen" handleChange={handleImagen} input={imagenInput} />
                 </FormAnimatedItem>
                 <FormAnimatedItem itemIndex={4} currentIndex={currentIndex}>
                     <p className="form-item-description"></p>

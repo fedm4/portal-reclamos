@@ -3,7 +3,7 @@ import InputFile from './InputFile';
 import './Input.scss';
 
 const Input = ({handleChange, name, type, label, onEnter, input}) => {
-    if(type==="file") return (<InputFile handleChange={handleChange} name={name}/>);
+    if(type==="file") return (<InputFile handleChange={handleChange} name={name} input={input}/>);
     const handleKeyDown = e => {
         if(e.key==='Tab') {
             e.preventDefault();

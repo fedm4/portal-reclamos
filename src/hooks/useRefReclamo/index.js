@@ -1,14 +1,14 @@
-import {useRef, useEffect} from 'react';
+import {createRef, useRef, useEffect} from 'react';
 
-const useRefReclamo = ({currentIndex, restart}) => {
-    const tituloInput = useRef();
-    const descripcionInput = useRef();
-    const comunasInput = useRef();
-    const imagenInput = useRef();
+const useRefReclamo = (currentIndex, restart) => {
+    const tituloInput = createRef();
+    const descripcionInput = createRef();
+    const comunasInput = createRef();
+    const imagenInput = createRef();
 
     useEffect(() => {
         tituloInput.current.focus();
-    }, [restart]);
+    }, [restart, tituloInput]);
     useEffect(()=> {
         switch(currentIndex) {
             case 0:
@@ -17,10 +17,16 @@ const useRefReclamo = ({currentIndex, restart}) => {
             case 1:
                 descripcionInput.current.focus();
                 break;
+            case 2:
+                comunasInput.current.focus();
+                break;
+            case 3:
+                imagenInput.current.focus();
+                break;
             default:
                 break;
         }
-    }, [currentIndex]);
+    }, [currentIndex, tituloInput, descripcionInput, comunasInput, imagenInput]);
     
     return {
         tituloInput,

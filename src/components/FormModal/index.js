@@ -8,7 +8,7 @@ import './FormModal.scss';
 
 const FormModal = ({children, closeModal, showModal, title}) => {
     const modalProps = useSpring(showModal ? 
-        {to: {left:'0'}, delay: 100}
+        {to: {left:'0vw'}}
         :
         {to: {left: '-100vw'}});
     return (

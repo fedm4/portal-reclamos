@@ -34,6 +34,13 @@ const useReclamo = (firebase) => {
             value: e.target.value
         });
     };
+    const handleChangeSelect = data => {
+        dispatch({
+            type: "changeInput",
+            key: data.name,
+            value: data.value
+        });
+    }
 
     /**
      * Functión change para File
@@ -65,6 +72,7 @@ const useReclamo = (firebase) => {
 
     return {
         handleChange,
+        handleChangeSelect,
         handleImagen,
         saveReclamo
     }

@@ -3,7 +3,7 @@ import ReactSelect from 'react-select';
 
 import './Select.scss';
 
-const Select = ({handleChange, options, value}) => {
+const Select = ({handleChange, name, options, value, input}) => {
     const style = {
         control: base => ({
             ...base,
@@ -16,13 +16,16 @@ const Select = ({handleChange, options, value}) => {
             marginTop: "-7px"
         })
     };
+    
     return (
         <ReactSelect
             className="select"
-            onChange={handleChange}
+            name={name}
+            onChange={e => handleChange({name, value: e.value})}
             options={options}
             styles={style}
             value={value}
+            ref={input}
         />
     )
 }
