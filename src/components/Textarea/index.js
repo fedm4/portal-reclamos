@@ -1,6 +1,7 @@
 import React from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 import InputButtons from './../InputButtons';
+import InputUnderline from './../InputUnderline';
 
 import './Textarea.scss';
 
@@ -21,11 +22,12 @@ const Textarea = ({children, handleChange, name, elRef, currentIndex, previousIn
                     className="textarea"
                     name={name}
                     onChange={handleChange}
-                    ref={elRef}
+                    inputRef={elRef}
                     onKeyDown={handleKeyDown}
                 >
                     {children}
                 </TextareaAutosize>
+                <InputUnderline />
             </div>
             <InputButtons 
                 currentIndex={currentIndex}

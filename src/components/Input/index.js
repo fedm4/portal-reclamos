@@ -1,8 +1,9 @@
 import React from 'react';
 import './Input.scss';
 import InputButtons from './../InputButtons';
+import InputUnderline from './../InputUnderline';
 
-const Input = ({handleChange, name, type, label, elRef, currentIndex, nextIndex}) => {
+const Input = ({handleChange, value, name, type, label, elRef, currentIndex, nextIndex}) => {
     const handleKeyDown = e => {
         if(e.key==='Tab' || e.key === 'Enter') {
             e.preventDefault();
@@ -19,9 +20,10 @@ const Input = ({handleChange, name, type, label, elRef, currentIndex, nextIndex}
                     placeholder={label}
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
+                    value={value}
                     ref={elRef}
                 />
-                <span className="input-underline"></span>
+                <InputUnderline />
             </label>
             <InputButtons
                 currentIndex={currentIndex}

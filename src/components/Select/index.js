@@ -4,12 +4,20 @@ import InputButtons from './../InputButtons';
 
 import './Select.scss';
 
-const Select = ({handleChange, name, options, elRef, currentIndex, previousIndex, nextIndex}) => {
-    const [value, setValue] = useState();
+const Select = ({handleChange, value, name, options, elRef, currentIndex, previousIndex, nextIndex}) => {
+    const [_value, setValue] = useState({label: value, value});
     const onChange= e => {
         setValue(e);
         handleChange({name, value: e.value});
     }
+    const handleKeyDown = e => {
+        if(e.key === 'Tab' || e.key === 'Enter') {
+            nextIndex();
+        }
+    };
+    /**
+     * Style object para react-select
+     */
     const style = {
         control: base => ({
             ...base,
@@ -53,10 +61,11 @@ const Select = ({handleChange, name, options, elRef, currentIndex, previousIndex
                 className="select"
                 name={name}
                 onChange={onChange}
+                onKeyDown={handleKeyDown}
                 options={options}
                 styles={style}
                 placeholder="Seleccionar"
-                value={value}
+                value={_value}
                 ref={elRef}
             />
             <InputButtons 

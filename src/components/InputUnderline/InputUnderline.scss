@@ -1,0 +1,17 @@
+@import '../../sass/variables';
+
+.input-underline{
+    border-bottom: 2px solid $white;
+    bottom: 0;
+    display: block;
+    left: 0;
+    position: absolute;
+    transition: width 0.3s linear;
+    width: 0%;
+}
+
+input, textarea {
+    &:focus + .input-underline{
+        width: 100%;
+    }
+}

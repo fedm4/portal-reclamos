@@ -27,7 +27,7 @@ const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart, successModal}) => {
     const firebase = useContext(FirebaseContext);
     const [currentIndex, setCurrentIndex] = useState(0);
     const {reclamo, imagen, handleChange, handleChangeSelect, handleImagen, saveReclamo} = useReclamo(firebase);
-    const {tituloRef, descripcionRef, comunasRef, imagenRef} = useRefReclamo(currentIndex);
+    const {tituloRef, descripcionRef, comunasRef, imagenRef} = useRefReclamo(currentIndex, restart);
     
     const closeModal = () => setReclamoOpen(false);
     const nextIndex = () => setCurrentIndex(currentIndex + 1);
@@ -57,6 +57,7 @@ const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart, successModal}) => {
                         elRef={tituloRef} 
                         currentIndex={currentIndex}
                         nextIndex={nextIndex}
+                        value={reclamo.titulo}
                     />
                 </FormAnimatedItem>
                 <FormAnimatedItem itemIndex={1} currentIndex={currentIndex}>
@@ -85,6 +86,7 @@ const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart, successModal}) => {
                         currentIndex={currentIndex}
                         nextIndex={nextIndex}
                         previousIndex={previousIndex}
+                        value={reclamo.comuna}
                     />
                 </FormAnimatedItem>
                 <FormAnimatedItem itemIndex={3} currentIndex={currentIndex}>

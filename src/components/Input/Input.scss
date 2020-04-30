@@ -17,18 +17,5 @@
         height: 45px;
         padding-left: $padding-s;
         width: 100%;
-        &:focus + .input-underline{
-            width: 100%;
-        }
-    }
-    
-    .input-underline{
-        border-bottom: 2px solid $white;
-        bottom: 0;
-        display: block;
-        left: 0;
-        position: absolute;
-        transition: width 0.3s linear;
-        width: 0%;
     }
 }

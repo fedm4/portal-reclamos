@@ -13,11 +13,11 @@ const FormAnimatedItem = ({itemIndex, currentIndex, children}) => {
                 'translateX(0)'
                 :
                 'translateX(150vw)',
-            from: {transform: 'translateX(150vw)'},
-            
+            from: {transform: 'translateX(150vw)'}
 
         }
     );
+    if(itemIndex!==currentIndex) return null;
     return (
         <animated.div className="form-animated-item" style={itemProps}>
             {children}
