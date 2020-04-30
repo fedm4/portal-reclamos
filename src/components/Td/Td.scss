@@ -1,0 +1,11 @@
+@import '../../sass/mixins';
+.td {
+    &.hideable {
+        display: none;
+    }
+    @include tablet {
+        &.hideable {
+            display: table-cell;
+        }    
+    }
+}

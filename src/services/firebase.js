@@ -21,6 +21,18 @@ class Firebase {
         app.initializeApp(config);
         this.database = app.database();
         this.storage = app.storage();
+        this.reclamos = [];
+    }
+
+    getFileRef (imagenRef) {
+        try {
+            const fileRef = this.storage
+                .ref()
+                .child(`images/${imagenRef}`);
+            return fileRef;
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     /**
@@ -48,9 +60,7 @@ class Firebase {
      * @param {File} imagen 
      */
     async subirImagen (imagen) {
-        const fileRef = this.storage
-            .ref()
-            .child(`images/${imagen.name}`);
+        const fileRef = this.getFileRef(imagen.name);
         try {
             await fileRef.put(imagen);
         }catch(err) {
@@ -66,11 +76,32 @@ class Firebase {
      */
     async borrarImagen (imagen) {
         try{
-            const fileRef = this.storage
-                .ref()
-                .child(`images/${imagen.name}`);
+            const fileRef = this.getFileRef(imagen.name);
             await fileRef.delete();
         }catch (err) {
+            console.log(err);
+        }
+    }
+
+    /**
+     * 
+     */
+    async getImage (imageName) {
+        try {
+            const fileRef = this.getFileRef(imageName);
+            return await fileRef.getDownloadURL();
+        }catch(err) {
+            console.log(err);
+        }
+    }
+    /**
+     * 
+     */
+    async getReclamos (setReclamos) {
+        try{
+            const dataRef = await this.database.ref('/reclamos/');
+            dataRef.on('value', snapshot => setReclamos(snapshot.val()));
+        }catch(err) {
             console.log(err);
         }
     }

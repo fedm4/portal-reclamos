@@ -1,0 +1,15 @@
+@import '../../sass/mixins';
+
+.table {
+    border-collapse: collapse;
+    th {
+        &.hideable {
+            display: none;
+        }
+        @include tablet {
+            &.hideable {
+                display: table-cell;
+            }    
+        }
+    }
+}
