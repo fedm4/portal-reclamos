@@ -26,10 +26,15 @@ const getComunasOptions = () => {
 const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart, successModal}) => {
     const firebase = useContext(FirebaseContext);
     const [currentIndex, setCurrentIndex] = useState(0);
-    const {reclamo, imagen, handleChange, handleChangeSelect, handleImagen, saveReclamo} = useReclamo(firebase);
+    const {reclamo, imagen, handleChange, handleChangeSelect, handleImagen, resetReclamo, saveReclamo} = useReclamo(firebase);
     const {tituloRef, descripcionRef, comunasRef, imagenRef} = useRefReclamo(currentIndex, restart);
     
-    const closeModal = () => setReclamoOpen(false);
+    const closeModal = () => {
+        setCurrentIndex(0);
+        resetReclamo();
+        setReclamoOpen(false);
+
+    }
     const nextIndex = () => setCurrentIndex(currentIndex + 1);
     const previousIndex = () => setCurrentIndex(currentIndex - 1);
     const getTabIndex = index => index === currentIndex ? 1 : 0;

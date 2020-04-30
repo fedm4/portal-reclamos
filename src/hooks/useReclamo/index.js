@@ -16,6 +16,8 @@ const useReclamo = (firebase) => {
             case "changeImg":
                 reclamo['imagen'] = action.imagen.name;
                 return { reclamo, imagen: action.imagen };
+            case "reset":
+                return {reclamo: new Reclamo(), imagen: null};
             default:
                 return state;
         }
@@ -48,10 +50,19 @@ const useReclamo = (firebase) => {
      */
     const handleImagen = e => {
         dispatch({
-        type: "changeImg",
-        imagen: e.target.files[0]
+            type: "changeImg",
+            imagen: e.target.files[0]
         });
     };
+
+    /**
+     * Función para resetear el state
+     * @param {Event} e 
+     */
+    const resetReclamo = e => {
+        dispatch({type: "reset"});
+    };
+
 
     /**
      * Toma reclamo e imagen de state y los pasa a firebase para 
@@ -75,6 +86,7 @@ const useReclamo = (firebase) => {
         handleChange,
         handleChangeSelect,
         handleImagen,
+        resetReclamo,
         saveReclamo
     }
 

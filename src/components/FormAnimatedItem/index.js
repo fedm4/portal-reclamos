@@ -17,10 +17,15 @@ const FormAnimatedItem = ({itemIndex, currentIndex, children}) => {
 
         }
     );
-    if(itemIndex!==currentIndex) return null;
+    //if(itemIndex!==currentIndex) return null;
     return (
         <animated.div className="form-animated-item" style={itemProps}>
-            {children}
+            {
+                itemIndex!==currentIndex?
+                null
+                :
+                children
+            }
         </animated.div>
     )
 }
