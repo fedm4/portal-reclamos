@@ -1,9 +1,15 @@
 import React from 'react';
 import './ConfirmacionReclamo.scss';
 
-const ConfirmacionReclamo = ({reclamo, imagen}) => {
+const ConfirmacionReclamo = ({className, reclamo, imagen}) => {
     return (
-        <ul className="confirmacion-reclamo">
+        <ul className={`${className} confirmacion-reclamo`}>
+            {
+                !reclamo.id ?
+                null
+                :
+                <li>ID: {reclamo.id}</li>
+            }
             <li>Título: {reclamo.titulo}</li>
             <li>
                 Descripcion: 
@@ -14,7 +20,7 @@ const ConfirmacionReclamo = ({reclamo, imagen}) => {
                 !imagen ? 
                 null
                 :
-                <li>Imagen: <img src={URL.createObjectURL(imagen)} alt="Preview" /></li>
+                <li>Imagen: <img src={imagen} alt="Preview" /></li>
             }
         </ul>
     )

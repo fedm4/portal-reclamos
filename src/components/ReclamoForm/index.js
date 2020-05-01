@@ -114,8 +114,9 @@ const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart, successModal}) => {
                         Por último, vamos a revisar los datos ingresados. Una vez confirmado, haga click en "Generar Reclamo" para continuar.
                     </p>
                     <ConfirmacionReclamo
+                        className="white"
                         reclamo={reclamo}
-                        imagen={imagen}
+                        imagen={imagen?URL.createObjectURL(imagen):null}
                     />
                     <InputButtons 
                         currentIndex={currentIndex}

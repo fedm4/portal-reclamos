@@ -15,7 +15,8 @@
     background: $white;
     border-radius: 8px;
     left: 0;
-    overflow: hidden;
+    max-height: 60vh;
+    overflow-x: hidden;
     position: fixed;
     top: 5vh;
     width: 100%;

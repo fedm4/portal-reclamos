@@ -1,8 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
 import Button from '../Button';
+import ConfirmacionReclamo from '../ConfirmacionReclamo';
+import Modal from '../Modal';
 import Table from '../Table';
 import Td from '../Td';
 import FirebaseContext from './../../context/FirebaseContext';
+import Reclamo from '../../models/Reclamo';
 
 import './ReclamoTable.scss';
 
@@ -11,6 +14,8 @@ const ReclamoTable = () => {
 
     const [reclamos, setReclamos] = useState([]);
     const [_reclamos, set_Reclamos] = useState({});
+    const [showDetailsModal, setShowDetailsModal] = useState(false);
+    const [detailsData, setDetailsData] = useState({reclamo: new Reclamo(), imagen: null});
     
     const columns = [
         {name: 'Id', hideable: true},
@@ -34,6 +39,15 @@ const ReclamoTable = () => {
         }
         setReclamos(data);
     };
+
+    const openDetailsModal = (index) => {
+        setDetailsData({
+            reclamo: reclamos[index],
+            imagen: reclamos[index].imagen
+        })
+        setShowDetailsModal(true);
+    }
+
     useEffect(()=>{
         firebase.getReclamos(set_Reclamos);
     }, []);
@@ -51,7 +65,7 @@ const ReclamoTable = () => {
                         <Td>
                             {row.titulo}
                             <div>
-                                <Button className="view-detail" handleClick={() => {}}>Ver detalle</Button>
+                                <Button className="view-detail" handleClick={() => openDetailsModal(index)}>Ver detalle</Button>
                             </div>
                         </Td>
                         <Td hideable={true}>{row.descripcion}</Td>
@@ -68,6 +82,16 @@ const ReclamoTable = () => {
                     </tr>
                 ))}
             </Table>
+            <Modal
+                title="Nuevo Reclamo"
+                showModal={showDetailsModal}
+                closeModal={() => setShowDetailsModal(false)}
+            >
+                <ConfirmacionReclamo
+                    reclamo={detailsData.reclamo}
+                    imagen={detailsData.imagen}
+                />
+            </Modal>
         </div>
     );
 }

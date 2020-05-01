@@ -1,8 +1,11 @@
 @import '../../sass/variables';
 
 .confirmacion-reclamo {
-    color: $white;
+    color: $black;
     font-family: $font-content;
+    &.white{
+        color: white;
+    }
     img {
         max-width: 100%;
     }

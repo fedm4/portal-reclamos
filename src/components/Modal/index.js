@@ -6,7 +6,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import './Modal.scss';
 
 
-const Modal = ({children, closeModal, footerChildren, showModal, title}) => {
+const Modal = ({children, closeModal, showModal, title}) => {
     const overlayProps = useSpring(showModal ? {opacity:1, zIndex: 0} : {opacity: 0, zIndex: -10});
     const modalProps = useSpring(showModal ? {to: {top:120}} : {to: {top: -1000}});
     return (
