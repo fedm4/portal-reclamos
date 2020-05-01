@@ -1,5 +1,9 @@
+@import '../../sass/variables';
 @import '../../sass/mixins';
+
 .td {
+    border-bottom: 1px solid lighten($black, 40);
+    padding: $padding-s $padding-xs;
     &.hideable {
         display: none;
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import './PanelHeader.scss';
 
 const PanelHeader = ({children, title}) => {
     return (

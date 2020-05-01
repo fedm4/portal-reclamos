@@ -1,8 +1,15 @@
 @import '../../sass/mixins';
-
+@import '../../sass/variables';
 .table {
     border-collapse: collapse;
+    text-align: center;
+    width: 100%;
     th {
+        background-color: $lightblue;
+        color: $white;
+        box-shadow: 0 4px 3px lighten($black, 30);
+        margin-bottom: $margin-s;
+        padding: $padding-s 0;
         &.hideable {
             display: none;
         }
@@ -11,5 +18,8 @@
                 display: table-cell;
             }    
         }
+    }
+    tr:last-of-type td {
+        border: none;
     }
 }

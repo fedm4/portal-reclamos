@@ -1,0 +1,7 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.panel {
+    @include box-shadow(3px, $black);
+    margin: $margin-l;
+}

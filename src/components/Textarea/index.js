@@ -16,7 +16,7 @@ const Textarea = ({children, handleChange, name, elRef, currentIndex, previousIn
     }
 
     return (
-        <div>
+        <label aria-label={name}>
             <div className="textarea-wrapper">
                 <TextareaAutosize
                     className="textarea"
@@ -34,7 +34,7 @@ const Textarea = ({children, handleChange, name, elRef, currentIndex, previousIn
                 previousIndex={previousIndex}
                 nextIndex={nextIndex}
             />
-        </div>
+        </label>
     )
 }
 

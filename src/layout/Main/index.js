@@ -5,18 +5,21 @@ import Panel from '../../components/Panel';
 import PanelHeader from '../../components/PanelHeader';
 import ReclamoModals from '../../components/ReclamoModals';
 import ReclamoTable from '../../components/ReclamoTable/';
+import './Main.scss';
 
 const Main = () => {
 
     const [reclamoOpen, setReclamoOpen] = useState(false);
     
     return (
-        <main>
+        <main className="content-main">
             <Panel>
                 <PanelHeader title="Reclamos">
-                    <Button handleClick={() => setReclamoOpen(true)}>Nuevo Reclamo</Button>
+                    <Button className="nuevo-reclamo black" handleClick={() => setReclamoOpen(true)}>Nuevo Reclamo</Button>
                 </PanelHeader>
-                <ReclamoTable />
+                <div className="reclamo-table-container">
+                    <ReclamoTable />
+                </div>
             </Panel>
             <ReclamoModals
                 reclamoOpen={reclamoOpen}

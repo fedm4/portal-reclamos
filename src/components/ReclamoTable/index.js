@@ -59,8 +59,10 @@ const ReclamoTable = () => {
                         <Td hideable={true}>
                             {
                                 !row.imagen ? 
-                                <span>'N/A'</span> :
-                                <img src={row.imagen} alt="Reclamo" />
+                                <span>N/A</span> :
+                                <div className="reclamo-img-container">
+                                    <img src={row.imagen} alt="Reclamo" />
+                                </div>
                             }
                         </Td>
                     </tr>

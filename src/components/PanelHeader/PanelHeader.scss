@@ -1,0 +1,12 @@
+@import '../../sass/variables';
+@import '../../sass/mixins';
+
+.panel-header{
+    @include flex-vertical-center;
+    background-color: $blue;
+    color: white;
+    position: relative;
+    h2 {
+        font-weight: 400;
+    }
+}

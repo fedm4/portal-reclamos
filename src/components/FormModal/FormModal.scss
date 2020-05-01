@@ -29,10 +29,16 @@
             cursor: pointer;
             font-size: 22px;
             height: 40px;
+            overflow: hidden;
             position: absolute;
             right: 0;
             top: 0;
-            width: 40px;;
+            width: 40px;
+            .close-modal-text {
+                text-indent: 100vw;
+                display: inline-block;
+                position: absolute;
+            }
         }
     }
     .form-modal-content {

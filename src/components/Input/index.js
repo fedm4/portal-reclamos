@@ -12,7 +12,7 @@ const Input = ({handleChange, value, name, type, label, elRef, currentIndex, nex
     }
     return (
         <div>
-            <label className="input-label">
+            <label aria-label={label} className="input-label">
                 <input
                     className="input"
                     type={type}

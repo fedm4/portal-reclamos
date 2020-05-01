@@ -16,7 +16,8 @@ const FormModal = ({children, closeModal, showModal, title}) => {
             <header className="form-modal-header">
                 <h2 className="form-modal-header-title">{title}</h2>
                 <button onClick={closeModal} className="form-modal-header-close">
-                    <FontAwesomeIcon icon={faTimes} />
+                    <FontAwesomeIcon aria-hidden="true" icon={faTimes} />
+                    <span className="close-modal-text">Cerrar Modal</span>
                 </button>
             </header>
             <section className="form-modal-content">

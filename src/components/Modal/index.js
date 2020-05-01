@@ -16,7 +16,7 @@ const Modal = ({children, closeModal, footerChildren, showModal, title}) => {
                         <animated.section style={modalProps} className="modal">
                             <header className="modal-header">
                                 <h2 className="modal-header-title">{title}</h2>
-                                <button onClick={closeModal} className="modal-header-close">
+                                <button aria-label="Close modal" onClick={closeModal} className="modal-header-close">
                                     <FontAwesomeIcon icon={faTimes} />
                                 </button>
                             </header>

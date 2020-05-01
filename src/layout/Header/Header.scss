@@ -4,7 +4,9 @@
 .main-header {
     @include flex-vertical-center;
     @include box-shadow(5px, $black);
-    color: $black;
+    box-sizing: border-box;
+    background-color: $blue;
+    color: $white;
     height: 120px;
     .main-title{
         font-family: $font-title;

@@ -1,0 +1,13 @@
+@import '../../sass/variables';
+
+.content-main {
+    background-color: $white;
+}
+
+.reclamo-table-container {
+    padding: $padding-l;
+}
+.nuevo-reclamo {
+    position: absolute;
+    right: 15px;
+}
