@@ -87,6 +87,7 @@ class Firebase {
      * 
      */
     async getImage (imageName) {
+        if(!imageName) return null;
         try {
             const fileRef = this.getFileRef(imageName);
             return await fileRef.getDownloadURL();

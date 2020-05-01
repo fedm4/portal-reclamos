@@ -1,0 +1,7 @@
+@import '../../sass/mixins';
+
+@include tablet {
+    .view-detail {
+        display: none;
+    }
+}

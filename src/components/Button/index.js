@@ -1,10 +1,10 @@
 import React from 'react';
 import './Button.scss';
 
-const Button = ({children, handleClick}) => {
+const Button = ({children,className, handleClick}) => {
     return (
         <button
-            className="button"
+            className={`${className} button`}
             type="button"
             onClick={handleClick}
         >
