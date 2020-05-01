@@ -9,10 +9,9 @@
     padding: $padding-l;
 }
 .nuevo-reclamo {
-    position: absolute;
+    position: fixed;
     right: 15px;
-    bottom: -32px;
-    @include tablet {
-        bottom: 23px;
-    }
+    bottom: 15px;
+    padding: $padding-m;
+    z-index: 10;
 }

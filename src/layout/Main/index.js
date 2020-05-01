@@ -14,9 +14,7 @@ const Main = () => {
     return (
         <main className="content-main">
             <Panel>
-                <PanelHeader title="Reclamos">
-                    <Button className="nuevo-reclamo black" handleClick={() => setReclamoOpen(true)}>Nuevo Reclamo</Button>
-                </PanelHeader>
+                <PanelHeader title="Reclamos" />
                 <div className="reclamo-table-container">
                     <ReclamoTable />
                 </div>
@@ -25,6 +23,7 @@ const Main = () => {
                 reclamoOpen={reclamoOpen}
                 setReclamoOpen={setReclamoOpen}
             />
+            <Button className="nuevo-reclamo black" handleClick={() => setReclamoOpen(true)}>Nuevo Reclamo</Button>
         </main>
     )
 }

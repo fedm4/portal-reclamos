@@ -10,6 +10,7 @@
     position: fixed;
     top: 0;
     width: 100vw;
+    z-index: 20;
     .form-modal-header {
         @include flex-vertical-center;
         @include box-shadow(5px, $black);
