@@ -3,8 +3,8 @@
 1. Instalar yarn
 2. Crear un nuevo proyecto de [Firebase](https://firebase.google.com/) 
 ## Cómo levantar el proyecto
-1. ```git clone git@github.com:fedm4/challenge-wingu.git```
-2. ```cd challenge-wingu```
+1. ```git clone git@github.com:fedm4/portal-reclamos.git```
+2. ```cd portal-reclamos```
 3. ```yarn install```
 4. Obtener los siguientes datos del proyecto creado en firebase:
     - API_KEY
