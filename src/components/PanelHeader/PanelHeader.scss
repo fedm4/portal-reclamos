@@ -5,8 +5,12 @@
     @include flex-vertical-center;
     background-color: $blue;
     color: white;
+    margin-bottom: 20px;
     position: relative;
     h2 {
         font-weight: 400;
+    }
+    @include tablet {
+        margin-bottom: none;
     }
 }

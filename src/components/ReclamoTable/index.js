@@ -83,7 +83,7 @@ const ReclamoTable = () => {
                 ))}
             </Table>
             <Modal
-                title="Nuevo Reclamo"
+                title={`Reclamo ${detailsData.reclamo.id}`}
                 showModal={showDetailsModal}
                 closeModal={() => setShowDetailsModal(false)}
             >
