@@ -1,26 +1,19 @@
 import React, {useContext, useEffect, useState} from 'react';
-import ReclamoForm from './../../components/ReclamoForm';
+
 import Button from '../../components/Button';
-import Modal from '../../components/Modal';
 import Table from '../../components/Table';
 import Td from '../../components/Td';
 
 import FirebaseContext from './../../context/FirebaseContext';
+import ReclamoModals from '../../components/ReclamoModals';
 
 const Main = () => {
     const firebase = useContext(FirebaseContext);
+
     const [reclamoOpen, setReclamoOpen] = useState(false);
-    const [successModal, setSuccessModal] = useState({showModal: false, id: null});
-    const [restart, setRestart] = useState(false);
     const [reclamos, setReclamos] = useState([]);
     const [_reclamos, set_Reclamos] = useState({});
-    const handleClick = () => {
-        setReclamoOpen(true);
-        setRestart(!restart);
-    };
-    const openSuccessModal = (id) => {
-        setSuccessModal({showModal: true, id});
-    };
+    
     const columns = [
         {name: 'Id', hideable: true},
         {name: 'Título', hideable: false},
@@ -55,7 +48,7 @@ const Main = () => {
             <section className="panel">
                 <header className="panel-header">
                     <h2>Reclamos</h2>
-                    <Button handleClick={handleClick}>Nuevo Reclamo</Button>
+                    <Button handleClick={() => setReclamoOpen(true)}>Nuevo Reclamo</Button>
                 </header>
                 <Table columns={columns} tableName="reclamos">
                     {reclamos.map((row, index) => (
@@ -71,19 +64,10 @@ const Main = () => {
                     ))}
                 </Table>
             </section>
-            <ReclamoForm
+            <ReclamoModals
                 reclamoOpen={reclamoOpen}
                 setReclamoOpen={setReclamoOpen}
-                restart={restart}
-                successModal={openSuccessModal}
             />
-            <Modal
-                title="Nuevo Reclamo"
-                showModal={successModal.showModal}
-                closeModal={() => {setSuccessModal({...successModal, showModal: false})}}
-            >
-                <p>Su nuevo reclamo se generó con ID {successModal.id}</p>
-            </Modal>
         </main>
     )
 }
