@@ -4,19 +4,23 @@
     border-collapse: collapse;
     text-align: center;
     width: 100%;
-    th {
-        background-color: $lightblue;
-        color: $white;
-        box-shadow: 0 4px 3px lighten($black, 30);
-        margin-bottom: $margin-s;
-        padding: $padding-s 0;
-        &.hideable {
-            display: none;
-        }
-        @include tablet {
-            &.hideable {
-                display: table-cell;
-            }    
+    thead{
+        tr {
+            box-shadow: 0 4px 3px lighten($black, 30);
+            th {
+                background-color: $lightblue;
+                color: $white;
+                margin-bottom: $margin-s;
+                padding: $padding-s 0;
+                &.hideable {
+                    display: none;
+                }
+                @include tablet {
+                    &.hideable {
+                        display: table-cell;
+                    }    
+                }
+            }
         }
     }
     tr:last-of-type td {

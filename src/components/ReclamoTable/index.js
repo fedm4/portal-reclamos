@@ -16,6 +16,7 @@ const ReclamoTable = () => {
     const [_reclamos, set_Reclamos] = useState({});
     const [showDetailsModal, setShowDetailsModal] = useState(false);
     const [detailsData, setDetailsData] = useState({reclamo: new Reclamo(), imagen: null});
+    const [showImageModal, setShowImageModal] = useState(false);
     
     const columns = [
         {name: 'Id', hideable: true},
@@ -48,6 +49,15 @@ const ReclamoTable = () => {
         setShowDetailsModal(true);
     }
 
+    const openImagenModal = (e, index) => {
+        e.preventDefault();
+        setDetailsData({
+            ...detailsData,
+            imagen: reclamos[index].imagen
+        })
+        setShowImageModal(true);
+    }
+
     useEffect(()=>{
         firebase.getReclamos(set_Reclamos);
     }, []);
@@ -75,7 +85,9 @@ const ReclamoTable = () => {
                                 !row.imagen ? 
                                 <span>N/A</span> :
                                 <div className="reclamo-img-container">
-                                    <img src={row.imagen} alt="Reclamo" />
+                                    <a href="#" onClick={e => openImagenModal(e, index)} >
+                                        <img src={row.imagen} alt="Reclamo" />
+                                    </a>
                                 </div>
                             }
                         </Td>
@@ -91,6 +103,15 @@ const ReclamoTable = () => {
                     reclamo={detailsData.reclamo}
                     imagen={detailsData.imagen}
                 />
+            </Modal>
+            <Modal
+                className="modal-imagen"
+                title={`Imagen del Reclamo`}
+                showModal={showImageModal}
+                customTop={20}
+                closeModal={() => setShowImageModal(false)}
+            >
+                <img src={detailsData.imagen} alt="Foto de Reclamo" />
             </Modal>
         </div>
     );
