@@ -4,6 +4,9 @@
 }
 
 .image-preview {
+    border: 3px solid $white;
+    box-sizing: border-box;
+    margin: $margin-l 0;
     width: 100%;
     img{
         max-width: 100%;

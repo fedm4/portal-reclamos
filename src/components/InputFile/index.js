@@ -27,14 +27,15 @@ const InputFile = ({handleChange, name, elRef, currentIndex, previousIndex, next
                     Seleccionar
                 </label>
             </Button>
-            {
-                !image ? 
-                null
-                :
-                <figure className="image-preview">
+            <figure className="image-preview" style={!image ? {height: "400px"} : null}>
+                {
+                    !image ? 
+                    null
+                    :
                     <img src={image} alt="Preview" />
-                </figure>
-            }
+                    
+                }
+            </figure>
             <InputButtons 
                 currentIndex={currentIndex}
                 previousIndex={previousIndex}
