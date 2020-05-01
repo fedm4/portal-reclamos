@@ -6,8 +6,11 @@ import './Select.scss';
 
 const Select = ({handleChange, value, name, options, elRef, currentIndex, previousIndex, nextIndex}) => {
     const [_value, setValue] = useState({label: value, value});
+    const [showNext, setShowNext] = useState(value.length ? true: false);
+
     const onChange= e => {
         setValue(e);
+        setShowNext(e?true:false);
         handleChange({name, value: e.value});
     }
     const handleKeyDown = e => {
@@ -72,6 +75,8 @@ const Select = ({handleChange, value, name, options, elRef, currentIndex, previo
                 currentIndex={currentIndex}
                 previousIndex={previousIndex}
                 nextIndex={nextIndex}
+                showNext={showNext}
+                helperText="Presione Enter para continuar"
             />
         </div>
     )

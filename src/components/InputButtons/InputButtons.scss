@@ -1,5 +1,14 @@
+@import '../../sass/variables';
+
 .reclamo-form-footer{
     display: block;
     margin-top: 10px;
     width: 100%;
+    .helper-text{
+        color: $white;
+        display: inline-block;
+        font-size: 12px;
+        vertical-align: middle;
+        width: 200px;
+    }
 }

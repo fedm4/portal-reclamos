@@ -77,6 +77,7 @@ const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart, successModal}) => {
                         currentIndex={currentIndex}
                         nextIndex={nextIndex}
                         previousIndex={previousIndex}
+                        value={reclamo.descripcion}
                     />
                 </FormAnimatedItem>
                 <FormAnimatedItem itemIndex={2} currentIndex={currentIndex}>
@@ -107,6 +108,8 @@ const ReclamoForm = ({reclamoOpen, setReclamoOpen, restart, successModal}) => {
                         currentIndex={currentIndex}
                         nextIndex={nextIndex}
                         previousIndex={previousIndex}
+                        value={reclamo.imagen}
+                        imagen={imagen}
                     />
                 </FormAnimatedItem>
                 <FormAnimatedItem itemIndex={4} currentIndex={currentIndex}>

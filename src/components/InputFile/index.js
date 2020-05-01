@@ -1,19 +1,29 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Button from '../Button';
 import InputButtons from '../InputButtons';
 import './InputFile.scss';
 
-const InputFile = ({handleChange, name, elRef, currentIndex, previousIndex, nextIndex}) => {
+const InputFile = ({handleChange, name, elRef, currentIndex, previousIndex, nextIndex, imagen}) => {
     const [image, setImage] = useState();
     const onChange = e => {
         handleChange(e);
         setImage(URL.createObjectURL(e.target.files[0]));
     }
+    useEffect(() => {
+        if(imagen) setImage(URL.createObjectURL(imagen));
+    }, [])
     return (
         <div>
             <Button type="button">
                 <label>
-                    <input id="input-file" className="input-file" type="file" onChange={onChange} name={name} ref={elRef} />
+                    <input
+                        id="input-file"
+                        className="input-file"
+                        type="file"
+                        onChange={onChange}
+                        name={name}
+                        ref={elRef}
+                    />
                     Seleccionar
                 </label>
             </Button>
@@ -29,6 +39,7 @@ const InputFile = ({handleChange, name, elRef, currentIndex, previousIndex, next
                 currentIndex={currentIndex}
                 previousIndex={previousIndex}
                 nextIndex={nextIndex}
+                showNext={true}
             />
         </div>
     );
