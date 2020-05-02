@@ -12,16 +12,13 @@
         background-color: $blue;
         border-radius: 5px;
         padding: $padding-l;
-        li {
-            list-style-type: none;
-            margin-bottom: $margin-m;
-            &:last-child{
-                margin-bottom: 0;
-            }
-        }
+
     }
     li {
+        list-style-type: none;
+        margin-bottom: $margin-m;
         &:last-child {
+                margin-bottom: 0;
             strong {
                 display:block;       
             }
