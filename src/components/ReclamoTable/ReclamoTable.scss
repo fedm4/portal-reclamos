@@ -1,6 +1,9 @@
 @import '../../sass/mixins';
 @import '../../sass/variables';
 
+.view-detail {
+    margin-top: $margin-s;
+}
 @include tablet {
     .view-detail {
         display: none;
@@ -8,7 +11,7 @@
 }
 
 .reclamo-img-container {
-    height: 100px;
+    height: 100%;
     overflow: hidden;
     width: 100px;
     img {
@@ -16,8 +19,9 @@
     }
 }
 .modal-imagen {
-    height: 95vh!important;
-    max-height: none;
+    display: inline-block;
+    height: auto!important;
+    max-height: 95vh;
     max-width: none;
     left: 5vw;
     width: 90vw!important;

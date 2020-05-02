@@ -8,19 +8,19 @@ const ConfirmacionReclamo = ({className, reclamo, imagen}) => {
                 !reclamo.id ?
                 null
                 :
-                <li>ID: {reclamo.id}</li>
+                <li><strong>ID:</strong> {reclamo.id}</li>
             }
-            <li>Título: {reclamo.titulo}</li>
+            <li><strong>Título:</strong> {reclamo.titulo}</li>
             <li>
-                Descripcion: 
+                <strong>Descripcion</strong>: 
                 <div>{reclamo.descripcion}</div>
             </li>
-            <li>Comuna: {reclamo.comuna}</li>
+            <li><strong>Comuna:</strong> {reclamo.comuna}</li>
             {
                 !imagen ? 
                 null
                 :
-                <li>Imagen: <img src={imagen} alt="Preview" /></li>
+                <li><strong>Imagen:</strong> <img src={imagen} alt="Preview" /></li>
             }
         </ul>
     )

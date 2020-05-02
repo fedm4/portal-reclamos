@@ -15,8 +15,12 @@
     padding: $padding-xs $padding-l;
     background-color: white;
     cursor: pointer;
+    transition: background-color 0.2s linear;
     &:active{
         box-shadow: inset 0 0 4px $black;
+    }
+    &:hover{
+        background-color: darken(white, 15);
     }
     &.blue {
         background-color: $blue;
@@ -35,5 +39,9 @@
         &:active{
             box-shadow: inset 0 0 4px $white;
         }
+        &:hover {
+            background-color: lighten($black, 10);
+        }
     }
+
 }

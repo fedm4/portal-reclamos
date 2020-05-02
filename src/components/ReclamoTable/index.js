@@ -1,4 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
+import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
+
 import Button from '../Button';
 import ConfirmacionReclamo from '../ConfirmacionReclamo';
 import Modal from '../Modal';
@@ -11,7 +13,8 @@ import './ReclamoTable.scss';
 
 const ReclamoTable = () => {
     const firebase = useContext(FirebaseContext);
-
+    const skeletonCount = [0,1,2,3,4];
+    
     const [reclamos, setReclamos] = useState([]);
     const [_reclamos, set_Reclamos] = useState({});
     const [showDetailsModal, setShowDetailsModal] = useState(false);
@@ -68,32 +71,48 @@ const ReclamoTable = () => {
 
     return (
         <div>
-            <Table columns={columns} tableName="reclamos">
-                {reclamos.map((row, index) => (
-                    <tr key={`reclamos-${index}`}>
-                        <Td hideable={true}> {row.id} </Td>
-                        <Td>
-                            {row.titulo}
-                            <div>
-                                <Button className="view-detail" handleClick={() => openDetailsModal(index)}>Ver detalle</Button>
-                            </div>
-                        </Td>
-                        <Td hideable={true}>{row.descripcion}</Td>
-                        <Td hideable={true}>{row.comuna}</Td>
-                        <Td hideable={true}>
-                            {
-                                !row.imagen ? 
-                                <span>N/A</span> :
-                                <div className="reclamo-img-container">
-                                    <a href="#" onClick={e => openImagenModal(e, index)} >
-                                        <img src={row.imagen} alt="Reclamo" />
-                                    </a>
-                                </div>
-                            }
-                        </Td>
-                    </tr>
-                ))}
-            </Table>
+            <SkeletonTheme color="#999" highlightColor="#AAA">
+                <Table columns={columns} tableName="reclamos">
+                    {
+                        reclamos.length ?
+                        reclamos.map((row, index) => (
+                            <tr key={`reclamos-${index}`}>
+                                <Td hideable={true}> {row.id} </Td>
+                                <Td>
+                                    {row.titulo}
+                                    <div>
+                                        <Button className="view-detail" handleClick={() => openDetailsModal(index)}>Ver detalle</Button>
+                                    </div>
+                                </Td>
+                                <Td hideable={true}>{row.descripcion}</Td>
+                                <Td hideable={true}>{row.comuna}</Td>
+                                <Td hideable={true}>
+                                    {
+                                        !row.imagen ? 
+                                        <span>N/A</span> :
+                                        <div className="reclamo-img-container">
+                                            <a href="#" onClick={e => openImagenModal(e, index)} >
+                                                <img src={row.imagen} alt="Reclamo" />
+                                            </a>
+                                        </div>
+                                    }
+                                </Td>
+                            </tr>
+                        ))
+                        :
+                        skeletonCount.map((item, idxsk) => (
+                            <tr key={`skeleton-reclamo-${idxsk}`}>
+                                <Td hideable={true}><Skeleton /></Td>
+                                <Td><Skeleton /></Td>
+                                <Td hideable={true}><Skeleton /></Td>
+                                <Td hideable={true}><Skeleton /></Td>
+                                <Td hideable={true}><Skeleton /></Td>
+                            </tr>
+                        ))
+                        
+                    }
+                </Table>
+            </SkeletonTheme>
             <Modal
                 title={`Reclamo ${detailsData.reclamo.id}`}
                 showModal={showDetailsModal}

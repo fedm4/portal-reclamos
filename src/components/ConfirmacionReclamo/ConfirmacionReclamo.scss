@@ -1,3 +1,4 @@
+@import '../../sass/mixins';
 @import '../../sass/variables';
 
 .confirmacion-reclamo {
@@ -6,7 +7,27 @@
     &.white{
         color: white;
     }
-    img {
-        max-width: 100%;
+    &.card {
+        @include box-shadow(5px, $white);
+        background-color: $blue;
+        border-radius: 5px;
+        padding: $padding-l;
+        li {
+            list-style-type: none;
+            margin-bottom: $margin-m;
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+    }
+    li {
+        &:last-child {
+            strong {
+                display:block;       
+            }
+            img {
+                max-width: 100%;
+            }
+        }
     }
 }

@@ -2,12 +2,16 @@
 @import '../../sass/mixins';
 
 .td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid lighten($black, 40);
-    padding: $padding-s $padding-xs;
+    padding: $padding-m $padding-s;
     &.hideable {
         display: none;
     }
     @include tablet {
+        display: table-cell;
         &.hideable {
             display: table-cell;
         }    
