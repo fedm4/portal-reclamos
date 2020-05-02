@@ -103,7 +103,7 @@ const ReclamoTable = () => {
                         skeletonCount.map((item, idxsk) => (
                             <tr key={`skeleton-reclamo-${idxsk}`}>
                                 <Td hideable={true}><Skeleton /></Td>
-                                <Td><Skeleton /></Td>
+                                <Td style={{display: 'block'}}><Skeleton /></Td>
                                 <Td hideable={true}><Skeleton /></Td>
                                 <Td hideable={true}><Skeleton /></Td>
                                 <Td hideable={true}><Skeleton /></Td>
